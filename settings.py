@@ -2,25 +2,26 @@
 import os
 
 CUR_DIR = os.path.dirname(__file__)
-ROOT_PATH = os.path.dirname (CUR_DIR)
+ROOT_PATH = os.path.dirname(CUR_DIR)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+# ('Your Name', 'your_email@domain.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join (CUR_DIR, 'db/sqlite3.db'),                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql',
+        # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'pay-server', # Or path to database file if using sqlite3.
+        'USER': 'root', # Not used with sqlite3.
+        'PASSWORD': 'root', # Not used with sqlite3.
+        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -68,7 +69,7 @@ SECRET_KEY = '4@whpmcqsh=o_jn9m-_ysg)-d-qd80pacsd1q-ihhe(89!!i(('
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,7 +83,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'alipay_python.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join (ROOT_PATH, "alipay_python/templates")  
+    os.path.join(ROOT_PATH, "alipay_python/templates")
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
