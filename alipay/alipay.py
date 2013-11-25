@@ -65,10 +65,25 @@ def build_mysign(prestr, key, sign_type='MD5', sign=''):
     if sign_type == 'MD5':
         return md5(prestr + key).hexdigest()
     if sign_type == 'RSA':
-        with open('public.pem') as publickfile:
-            p = publickfile.read()
-            pubkey = rsa.PublicKey.load_pkcs1(p)
-            return rsa.verify(prestr + key, sign, pubkey)
+        return rsa_verify(prestr + key, sign)
+    return ''
+
+
+# RSA sign function
+def rsa_sign(msg):
+    with open('ssl/rsa_private_key.pem') as privatekfile:
+        p = privatekfile.read()
+        prikey = rsa.PrivateKey._load_pkcs1_pem(p)
+        return rsa.sign(msg, prikey, 'MD5')
+    return ''
+
+
+# RSA verify function
+def rsa_verify(msg, sign):
+    with open('ssl/rsa_public_key.pem') as publickfile:
+        p = publickfile.read()
+        pubkey = rsa.PublicKey.load_pkcs1(p)
+        return rsa.verify(msg, sign, pubkey)
     return ''
 
 
