@@ -46,7 +46,12 @@ def return_url_handler(request):
 
 
 def check_url_handle(request):
-    id = request.POST.get('id')
-    bill = Bill.objects.get()
+    bill = Bill.objects.get(out_trade_no=request.POST.get('out_trade_no'))
+    if not bill:
+        return HttpResponse('ok')
+    else:
+        return HttpResponse('null')
 
-    return HttpResponse('ok')
+
+def index(request):
+    return HttpResponse('home')
