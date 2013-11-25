@@ -26,8 +26,8 @@ def notify_url_handler(request):
     if request.method == 'POST':
         if notify_verify(request.POST):
             logger1.info('pass verification...')
-            tn = request.POST.get('out_trade_no')
-            bill = Bill.objects.get(pk=tn)
+            bill = Bill(out_trade_no=request.POST.get('out_trade_no'))
+            #TODO:fill obj
             bill.save()
     return HttpResponse("fail")
 
