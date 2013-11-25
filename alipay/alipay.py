@@ -71,7 +71,7 @@ def build_mysign(prestr, key, sign_type='MD5', sign=''):
 
 # RSA sign function
 def rsa_sign(msg):
-    with open('ssl/rsa_private_key.pem') as privatekfile:
+    with open('ssl/pck8.txt') as privatekfile:
         p = privatekfile.read()
         prikey = rsa.PrivateKey._load_pkcs1_pem(p)
         return rsa.sign(msg, prikey, 'MD5')
@@ -165,6 +165,7 @@ def create_partner_trade_by_buyer(tn, subject, body, price):
     params['sign_type'] = settings.ALIPAY_SIGN_TYPE
 
     return _GATEWAY + urlencode(params)
+
 
 # 确认发货接口
 def send_goods_confirm_by_platform(tn):
