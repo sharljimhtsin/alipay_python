@@ -31,6 +31,7 @@ class Notify(models.Model):
     nid = models.CharField(max_length=50)
     sign_type = models.CharField(max_length=3, default='RSA')
     sign = models.CharField(max_length=100)
+    bill = models.ForeignKey(Bill)
 
 
 admin.site.register(Bill)
