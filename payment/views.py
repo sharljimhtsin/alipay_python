@@ -110,4 +110,4 @@ def api(request):
             users = Users.objects.get(seller_id=request.POST.get('seller_id'))
             if users:
                 return HttpResponse(json.dumps(users), content_type="application/json")
-        return HttpResponse('false')
+    return HttpResponse('false')
