@@ -89,7 +89,7 @@ def rsa_verify(msg, sign):
 
 # 快捷支付接口,客户端实现，服务端只做验证
 def quick_pay():
-    return None
+    pass
 
 
 # 即时到账交易接口

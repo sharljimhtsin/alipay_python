@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.contrib import admin
+from django.forms.models import model_to_dict
 
 
 class Bill(models.Model):
@@ -24,6 +25,9 @@ class Bill(models.Model):
     use_coupon = models.CharField(max_length=1, null=True)
     discount = models.CharField(max_length=10, null=True)
 
+    def __unicode__(self):
+        return model_to_dict(self)
+
 
 class Notify(models.Model):
     time = models.DateTimeField()
@@ -32,6 +36,9 @@ class Notify(models.Model):
     sign_type = models.CharField(max_length=3, default='RSA')
     sign = models.CharField(max_length=100)
     bill = models.ForeignKey(Bill)
+
+    def __unicode__(self):
+        return model_to_dict(self)
 
 
 admin.site.register(Bill)

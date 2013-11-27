@@ -3,6 +3,7 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 import logging
+from django_extensions.db.fields import json
 
 from alipay.alipay import *
 from payment.models import Bill, Notify
@@ -84,13 +85,29 @@ def return_url_handler(request):
 
 
 def check_url_handle(request):
-    #TODO RSA sign for security
-    bill = Bill.objects.get(out_trade_no=request.POST.get('out_trade_no'))
-    if not bill:
-        return HttpResponse('ok')
-    else:
-        return HttpResponse('null')
+    if notify_verify(request.POST):
+        bill = Bill.objects.get(out_trade_no=request.POST.get('out_trade_no'))
+        if bill:
+            return HttpResponse('true')
+        else:
+            return HttpResponse('false')
+    return HttpResponse('false')
 
 
 def index(request):
     return HttpResponse('home')
+
+
+def api(request):
+    # check sign
+    if notify_verify(request.POST):
+        method = request.POST.get('method')
+        if method == 'getPayment':
+            payment = Bill.objects.get(out_trade_no=request.POST.get('out_trade_no'))
+            if payment:
+                return HttpResponse(json.dumps(payment), content_type="application/json")
+        elif method == 'getUser':
+            users = Users.objects.get(seller_id=request.POST.get('seller_id'))
+            if users:
+                return HttpResponse(json.dumps(users), content_type="application/json")
+        return HttpResponse('false')
