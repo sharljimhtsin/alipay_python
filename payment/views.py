@@ -3,11 +3,14 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 import logging
+import httplib
+import urllib
+
 from django_extensions.db.fields import json
 
 from alipay.alipay import *
 from payment.models import Bill, Notify
-from accounts.models import Users
+from accounts.models import Buyer
 from settings import LOGGING_PAYMENT
 
 
@@ -98,6 +101,14 @@ def index(request):
     return HttpResponse('home')
 
 
+# notify partern's handler page
+def notify(domain, url, params):
+    con = httplib.HTTPConnection(domain)
+    param = urllib.urlencode(params)
+    con.request('POST', url, param)
+    resp = con.getresponse()
+
+
 def api(request):
     # check sign
     if notify_verify(request.POST):
@@ -107,7 +118,10 @@ def api(request):
             if payment:
                 return HttpResponse(json.dumps(payment), content_type="application/json")
         elif method == 'getUser':
-            users = Users.objects.get(seller_id=request.POST.get('seller_id'))
+            users = Buyer.objects.get(buyer_id=request.POST.get('buyer_id'))
             if users:
                 return HttpResponse(json.dumps(users), content_type="application/json")
+        elif method == 'getPaymentByUser':
+            users = Buyer.objects.get(buyer_id=request.POST.get('buyer_id'))
+
     return HttpResponse('false')
