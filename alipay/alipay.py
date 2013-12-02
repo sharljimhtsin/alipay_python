@@ -7,6 +7,7 @@ Created on 2011-4-21
 import types
 from urllib import urlencode, urlopen
 import logging
+import base64
 
 import rsa
 
@@ -72,7 +73,7 @@ def build_mysign(prestr, key, sign_type='MD5', sign=''):
     if sign_type == 'MD5':
         return md5(prestr + key).hexdigest()
     if sign_type == 'RSA':
-        return rsa_verify(prestr + key, sign)
+        return rsa_verify(prestr, base64.b64decode(sign))
     return ''
 
 
@@ -89,8 +90,9 @@ def rsa_sign(msg):
 def rsa_verify(msg, sign):
     with open('ssl/alipay_public_key.pem') as publickfile:
         p = publickfile.read()
-        pubkey = rsa.PublicKey.load_pkcs1(p)
-        return rsa.verify(msg, sign, pubkey)
+        pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(p)
+        ok = rsa.verify(msg, sign, pubkey)
+        return ok
     return ''
 
 
@@ -223,4 +225,3 @@ def notify_verify(post):
     if veryfy_result.lower().strip() == 'true':
         return True
     return False
-
