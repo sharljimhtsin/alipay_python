@@ -2,11 +2,9 @@
 
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-import logging
 import httplib
 import urllib
-
-from django_extensions.db.fields import json
+import json
 
 from alipay.alipay import *
 from payment.models import Bill, Notify
@@ -29,9 +27,9 @@ def notify_url_handler(request):
     """
     logger1.info('>>notify url handler start...')
     if request.method == 'POST':
+        logger1.info(request.POST)
         if notify_verify(request.POST):
             logger1.info('pass verification...')
-
             # save the bill
             bill = Bill(out_trade_no=request.POST.get('out_trade_no'),
                         subject=request.POST.get('subject'),
