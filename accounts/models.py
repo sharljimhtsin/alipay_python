@@ -15,7 +15,7 @@ class Seller(models.Model):
 
 class Buyer(models.Model):
     name = models.TextField(default='Alipay user')
-    buyer_id = models.IntegerField()
+    buyer_id = models.TextField()
     buyer_email = models.EmailField()
 
     def __unicode__(self):

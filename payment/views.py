@@ -42,20 +42,20 @@ def notify_url_handler(request):
             bill.save()
 
             # save the user
-            users = Users.objects.get(seller_id=request.POST.get('seller_id'))
-            if users:
-                users = Users(name='',
-                              seller_id=bill.seller_id,
-                              seller_email=bill.seller_email)
+            users = Buyer.objects.filter(buyer_id=request.POST.get('buyer_id'))
+            if not users:
+                users = Buyer(name='',
+                              buyer_id=bill.buyer_id,
+                              buyer_email=bill.buyer_email)
                 users.save()
 
             # save this notify
-            notify = Notify(time=request.POST.get('time'),
-                            type=request.POST.get('type'),
-                            nid=request.POST.get('nid'),
+            notify = Notify(time=request.POST.get('notify_time'),
+                            type=request.POST.get('notify_type'),
+                            nid=request.POST.get('notify_id'),
                             sign_type=request.POST.get('sign_type'),
                             sign=request.POST.get('sign'),
-                            bill=bill.pk)
+                            bill=bill)
             notify.save()
 
             return HttpResponse('success')
