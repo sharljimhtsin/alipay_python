@@ -6,19 +6,11 @@ Created on 2011-4-21
 '''
 import types
 from urllib import urlencode, urlopen
-import logging
 import base64
-
 import rsa
 
 from hashcompat import md5_constructor as md5
 from config import settings
-from settings import LOGGING_PAYMENT
-
-
-logger1 = logging.getLogger(__name__)
-logger1.setLevel(logging.INFO)
-logger1.addHandler(logging.FileHandler(LOGGING_PAYMENT))
 
 
 def smart_str(s, encoding='utf-8', strings_only=False, errors='strict'):
@@ -201,7 +193,6 @@ def send_goods_confirm_by_platform(tn):
 def notify_verify(post):
     # 初级验证--签名
     _, prestr = params_filter(post)
-    logger1.info(prestr)
     is_rsa = (post.get('sign_type') == settings.ALIPAY_SIGN_TYPE_WS)
     if is_rsa:
         result = build_mysign(prestr, settings.ALIPAY_KEY, settings.ALIPAY_SIGN_TYPE_WS, post.get('sign'))

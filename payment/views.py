@@ -5,18 +5,11 @@ from django.core.urlresolvers import reverse
 import httplib
 import urllib
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 from alipay.alipay import *
 from payment.models import Bill, Notify
 from accounts.models import Buyer
-from settings import LOGGING_PAYMENT
-
-
-logger1 = logging.getLogger(__name__)
-logger1.setLevel(logging.INFO)
-logger1.addHandler(logging.FileHandler(LOGGING_PAYMENT))
-
-from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
@@ -25,11 +18,8 @@ def notify_url_handler(request):
     Handler for notify_url for asynchronous updating billing information.
     Logging the information.
     """
-    logger1.info('>>notify url handler start...')
     if request.method == 'POST':
-        logger1.info(request.POST)
         if notify_verify(request.POST):
-            logger1.info('pass verification...')
             # save the bill
             bill = Bill(out_trade_no=request.POST.get('out_trade_no'),
                         subject=request.POST.get('subject'),
@@ -76,7 +66,6 @@ def return_url_handler(request):
     """
     Handler for synchronous updating billing information.
     """
-    logger1.info('>> return url handler start')
     if notify_verify(request.GET):
         tn = request.GET.get('out_trade_no')
         trade_no = request.GET.get('trade_no')
