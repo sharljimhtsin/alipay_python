@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>审核用户</title>
+{% endblock title %}
+
+{% block body %}
+<div align="center">
+    所有待审核用户列表：<br>
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td>应用名</td>
+            <td>邮箱</td>
+            <td>应用ID</td>
+            <td>通知地址</td>
+            <td>操作</td>
+        </tr>
+        {% for p in partner %}
+        <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.app_name }}</td>
+            <td>{{ p.email }}</td>
+            <td>{{ p.app_id }}</td>
+            <td>{{ p.notify_url }}</td>
+            <td><a href="/allow?app_id={{ p.app_id }}">允许</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock body %}

@@ -25,7 +25,9 @@ class Buyer(models.Model):
 class Partner(models.Model):
     name = models.TextField()
     app_name = models.TextField()
-    app_id = models.BigIntegerField()
-    public_key = models.TextField()
+    email = models.EmailField()
+    app_id = models.CharField(max_length=10)
+    public_key = models.TextField(null=True)
     notify_url = models.TextField()
-    return_url = models.TextField()
+    return_url = models.TextField(null=True)
+    real = models.SmallIntegerField(default=0)
