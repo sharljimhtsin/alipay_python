@@ -20,7 +20,7 @@ def notify_url_handler(request):
     Logging the information.
     """
     if request.method == 'POST':
-        if not notify_verify(request.POST):
+        if notify_verify(request.POST):
             # save the bill
             bill = Bill(out_trade_no=request.POST.get('out_trade_no'),
                         subject=request.POST.get('subject'),
