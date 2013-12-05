@@ -28,6 +28,9 @@ class Bill(models.Model):
     def __unicode__(self):
         return model_to_dict(self)
 
+    def get_appid(self):
+        return str(self.body).split("#")[1]
+
 
 class Notify(models.Model):
     time = models.DateTimeField()

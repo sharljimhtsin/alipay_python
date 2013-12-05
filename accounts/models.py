@@ -31,3 +31,6 @@ class Partner(models.Model):
     notify_url = models.TextField()
     return_url = models.TextField(null=True)
     real = models.SmallIntegerField(default=0)
+
+    def get_doamin(self):
+        return str(self.notify_url).split("/")[2]

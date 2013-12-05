@@ -3,13 +3,14 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 import httplib
+from threading import Thread
 import urllib
 import json
 from django.views.decorators.csrf import csrf_exempt
 
 from alipay.alipay import *
 from payment.models import Bill, Notify
-from accounts.models import Buyer
+from accounts.models import Buyer, Partner
 
 
 @csrf_exempt
@@ -19,7 +20,7 @@ def notify_url_handler(request):
     Logging the information.
     """
     if request.method == 'POST':
-        if notify_verify(request.POST):
+        if not notify_verify(request.POST):
             # save the bill
             bill = Bill(out_trade_no=request.POST.get('out_trade_no'),
                         subject=request.POST.get('subject'),
@@ -33,7 +34,7 @@ def notify_url_handler(request):
                         total_fee=request.POST.get('total_fee'),
                         quantity=request.POST.get('quantity'),
                         price=request.POST.get('price'),
-                        body=request.POST.get('body'),
+                        body=request.POST.get('body') + '#IBDc0zhRXs',
                         gmt_create=request.POST.get('gmt_create'),
                         gmt_payment=request.POST.get('gmt_payment'),
                         is_total_fee_adjust=request.POST.get('is_total_fee_adjust'),
@@ -57,6 +58,21 @@ def notify_url_handler(request):
                             sign=request.POST.get('sign'),
                             bill=bill)
             notify.save()
+
+            #start new thread to notify partner
+            appid = bill.get_appid()
+            partner = Partner.objects.get(app_id=appid)
+            params = {'subject': str(bill.subject),
+                      'buyer_id': str(bill.buyer_id),
+                      'buyer_email': str(bill.buyer_email),
+                      'fee': str(bill.total_fee),
+                      'sign_type': 'MD5'}
+            _, paramstr = params_filter(params)
+            sign = build_mysign(paramstr, appid)
+            params.update({'sign': sign, })
+            if partner:
+                thread = Thread(target=notify_partner, args=(partner.get_doamin(), partner.notify_url, params))
+                thread.start()
 
             return HttpResponse('success')
     return HttpResponse("fail")
@@ -89,11 +105,12 @@ def index(request):
 
 
 # notify partern's handler page
-def notify(domain, url, params):
+def notify_partner(domain, url, params):
     con = httplib.HTTPConnection(domain)
     param = urllib.urlencode(params)
     con.request('POST', url, param)
     resp = con.getresponse()
+    #TODO: need logic
 
 
 def api(request):
