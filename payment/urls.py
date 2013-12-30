@@ -1,6 +1,6 @@
 #!/usr/bin/python
+from django.conf.urls import patterns, url
 
-from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
                        url(r'^api$', view='payment.views.api', name="payment_api"),
