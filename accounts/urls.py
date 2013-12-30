@@ -1,5 +1,7 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url
+
 from accounts.views import Register
+from django.conf.urls.defaults import *
 
 
 urlpatterns = patterns('',

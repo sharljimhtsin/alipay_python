@@ -23,7 +23,11 @@
             <td>{{ p.email }}</td>
             <td>{{ p.app_id }}</td>
             <td>{{ p.notify_url }}</td>
+            {% if p.real == 0 %}
             <td><a href="/allow?app_id={{ p.app_id }}">允许</a></td>
+            {% else %}
+            <td><a href="#">已允许</a></td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>

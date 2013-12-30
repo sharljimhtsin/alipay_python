@@ -9,6 +9,13 @@
     <form action="doReg" method="post">
         <label>用户名</label><input name="username"><br>
         <label>邮箱</label><input name="email"><br>
+		<label for="apptype">应用类型</label>
+		<select id="apptype" name="apptype">
+		 <option value="0" selected >游戏</option>
+		 <option value="1">音乐</option>
+		 <option value="2">生活</option>
+		 <option value="3">交通</option>
+		</select>
         <label>应用名</label><input name="appname"><br>
         <label>通知地址</label><input name="notifyid"><br>
         <button type="submit" value="REG">提交</button>
