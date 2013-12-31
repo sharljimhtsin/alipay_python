@@ -1,8 +1,9 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 from django.db import models
 from django.contrib import admin
 from django.forms.models import model_to_dict
+import re
 
 
 class Bill(models.Model):
@@ -29,7 +30,8 @@ class Bill(models.Model):
         return model_to_dict(self)
 
     def get_appid(self):
-        return str(self.body).split("#")[1]
+        m = re.search("(?<=#)\d+(?=#)", str(self.body))
+        return m.group(0)
 
 
 class Notify(models.Model):

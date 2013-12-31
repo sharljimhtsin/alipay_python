@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>订单列表</title>
+{% endblock title %}
+
+{% block body %}
+<div align="center">
+    所有订单列表：<br>
+    <table>
+        <tr>
+            <td>out_trade_no</td>
+            <td>subject</td>
+            <td>trade_status</td>
+            <td>body</td>
+            <td>price</td>
+            <td>total_fee</td>
+        </tr>
+        {% for p in bill %}
+        <tr>
+            <td>{{ p.out_trade_no }}</td>
+            <td>{{ p.subject }}</td>
+            <td>{{ p.trade_status }}</td>
+            <td>{{ p.body }}</td>
+            <td>{{ p.price }}</td>
+            <td>{{ p.total_fee }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock body %}

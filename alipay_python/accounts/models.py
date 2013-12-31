@@ -25,7 +25,9 @@ class Buyer(models.Model):
 class Partner(models.Model):
     name = models.TextField()
     app_name = models.TextField()
+    company_name = models.TextField() 
     email = models.EmailField()
+    phone = models.TextField(null=True)
     app_type = models.IntegerField()
     app_id = models.IntegerField()
     app_key = models.CharField(max_length=10)

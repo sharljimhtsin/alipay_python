@@ -97,8 +97,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'payment',
-    'accounts',
+    'alipay_python.payment',
+    'alipay_python.accounts',
 )
 
 LOGGING_PAYMENT = 'payment.log'

@@ -11,6 +11,13 @@ import rsa
 
 from hashcompat import md5_constructor as md5
 from config import settings
+from alipay_python.settings import LOGGING_PAYMENT
+import logging
+from alipay_python.accounts.models import Partner
+
+logger1 = logging.getLogger(__name__)
+logger1.setLevel(logging.INFO)
+logger1.addHandler(logging.FileHandler(LOGGING_PAYMENT))
 
 
 def smart_str(s, encoding='utf-8', strings_only=False, errors='strict'):
@@ -71,7 +78,7 @@ def build_mysign(prestr, key, sign_type='MD5', sign=''):
 
 # RSA sign function
 def rsa_sign(msg):
-    with open('ssl/pck8.txt') as privatekfile:
+    with open('alipay_python/ssl/pck8.txt') as privatekfile:
         p = privatekfile.read()
         prikey = rsa.PrivateKey._load_pkcs1_pem(p)
         return rsa.sign(msg, prikey, 'MD5')
@@ -80,7 +87,7 @@ def rsa_sign(msg):
 
 # RSA verify function
 def rsa_verify(msg, sign):
-    with open('ssl/alipay_public_key.pem') as publickfile:
+    with open('alipay_python/ssl/alipay_public_key.pem') as publickfile:
         p = publickfile.read()
         pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(p)
         ok = rsa.verify(msg, sign, pubkey)
@@ -108,14 +115,14 @@ def create_direct_pay_by_user(tn, subject, body, total_fee):
     params['show_url'] = settings.ALIPAY_SHOW_URL
 
     # 从订单数据中动态获取到的必填参数
-    params['out_trade_no'] = tn        # 请与贵网站订单系统中的唯一订单号匹配
-    params['subject'] = subject   # 订单名称，显示在支付宝收银台里的“商品名称”里，显示在支付宝的交易管理的“商品名称”的列表里。
-    params['body'] = body      # 订单描述、订单详细、订单备注，显示在支付宝收银台里的“商品描述”里
-    params['total_fee'] = total_fee # 订单总金额，显示在支付宝收银台里的“应付总额”里
+    params['out_trade_no'] = tn  # 请与贵网站订单系统中的唯一订单号匹配
+    params['subject'] = subject  # 订单名称，显示在支付宝收银台里的“商品名称”里，显示在支付宝的交易管理的“商品名称”的列表里。
+    params['body'] = body  # 订单描述、订单详细、订单备注，显示在支付宝收银台里的“商品描述”里
+    params['total_fee'] = total_fee  # 订单总金额，显示在支付宝收银台里的“应付总额”里
 
     # 扩展功能参数——网银提前
-    params['paymethod'] = 'directPay'   # 默认支付方式，四个值可选：bankPay(网银); cartoon(卡通); directPay(余额); CASH(网点支付)
-    params['defaultbank'] = ''          # 默认网银代号，代号列表见http://club.alipay.com/read.php?tid=8681379
+    params['paymethod'] = 'directPay'  # 默认支付方式，四个值可选：bankPay(网银); cartoon(卡通); directPay(余额); CASH(网点支付)
+    params['defaultbank'] = ''  # 默认网银代号，代号列表见http://club.alipay.com/read.php?tid=8681379
 
     # 扩展功能参数——防钓鱼
     params['anti_phishing_key'] = ''
@@ -148,16 +155,16 @@ def create_partner_trade_by_buyer(tn, subject, body, price):
     params['return_url'] = settings.ALIPAY_RETURN_URL
 
     # 业务参数
-    params['out_trade_no'] = tn        # 请与贵网站订单系统中的唯一订单号匹配
-    params['subject'] = subject   # 订单名称，显示在支付宝收银台里的“商品名称”里，显示在支付宝的交易管理的“商品名称”的列表里。
+    params['out_trade_no'] = tn  # 请与贵网站订单系统中的唯一订单号匹配
+    params['subject'] = subject  # 订单名称，显示在支付宝收银台里的“商品名称”里，显示在支付宝的交易管理的“商品名称”的列表里。
     params['payment_type'] = '1'
-    params['logistics_type'] = 'POST'   # 第一组物流类型
+    params['logistics_type'] = 'POST'  # 第一组物流类型
     params['logistics_fee'] = '0.00'
     params['logistics_payment'] = 'BUYER_PAY'
-    params['price'] = price             # 订单总金额，显示在支付宝收银台里的“应付总额”里
-    params['quantity'] = 1              # 商品的数量
+    params['price'] = price  # 订单总金额，显示在支付宝收银台里的“应付总额”里
+    params['quantity'] = 1  # 商品的数量
     params['seller_email'] = settings.ALIPAY_SELLER_EMAIL
-    params['body'] = body      # 订单描述、订单详细、订单备注，显示在支付宝收银台里的“商品描述”里
+    params['body'] = body  # 订单描述、订单详细、订单备注，显示在支付宝收银台里的“商品描述”里
     params['show_url'] = settings.ALIPAY_SHOW_URL
 
     params, prestr = params_filter(params)
@@ -179,7 +186,7 @@ def send_goods_confirm_by_platform(tn):
 
     # 业务参数
     params['trade_no'] = tn
-    params['logistics_name'] = u'银河列车'   # 物流公司名称
+    params['logistics_name'] = u'银河列车'  # 物流公司名称
     params['transport_type'] = u'POST'
 
     params, prestr = params_filter(params)
@@ -199,9 +206,14 @@ def notify_verify(post):
         if not result:
             return result
     else:
-        mysign = build_mysign(prestr, settings.ALIPAY_KEY, settings.ALIPAY_SIGN_TYPE, '')
+        p = Partner.objects.get(app_id=post.get('app_id'))
+        mysign = build_mysign(prestr, p.app_key, settings.ALIPAY_SIGN_TYPE, '')
         if mysign != post.get('sign'):
             return False
+        else:
+            return True  # end here
+        
+    logger1.info('first verify pass')
 
     # 二级验证--查询支付宝服务器此条信息是否有效
     params = {}
@@ -214,5 +226,6 @@ def notify_verify(post):
         gateway = 'http://notify.alipay.com/trade/notify_query.do'
     veryfy_result = urlopen(gateway, urlencode(params)).read()
     if veryfy_result.lower().strip() == 'true':
+        logger1.info('second verify pass')
         return True
     return False

@@ -1,0 +1,272 @@
+get post
+get post
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1000#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+verify ok
+save bill
+{'trade_no': u'2013120268377703', 'seller_email': u'zhangq@xyj001.com', 'seller_id': u'2088111756994892', 'is_total_fee_adjust': u'Y', 'buyer_id': u'2088002411644031', 'gmt_payment': None, 'price': u'1.00', 'buyer_email': u'caihuapcl@163.com', 'body': u'fnjmjj#1000#', 'use_coupon': u'N', 'gmt_create': u'2013-12-02 16:45:09', 'out_trade_no': u'120216495446055', 'total_fee': u'1.00', 'discount': u'0.00', 'trade_status': u'WAIT_BUYER_PAY', 'type': None, u'id': 7, 'quantity': u'1', 'subject': u'fhhh'}
+save notify
+{'bill': 7, 'time': u'2013-12-02 16:45:09', 'nid': u'de31596d65d210bd4d4efab9d96c95ba26', 'sign': u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I=', 'sign_type': u'RSA', 'type': u'trade_status_sync', u'id': 7}
+appid: 1000
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+verify ok
+save bill
+{'trade_no': u'2013120268377703', 'seller_email': u'zhangq@xyj001.com', 'seller_id': u'2088111756994892', 'is_total_fee_adjust': u'Y', 'buyer_id': u'2088002411644031', 'gmt_payment': None, 'price': u'1.00', 'buyer_email': u'caihuapcl@163.com', 'body': u'fnjmjj#1005#', 'use_coupon': u'N', 'gmt_create': u'2013-12-02 16:45:09', 'out_trade_no': u'120216495446055', 'total_fee': u'1.00', 'discount': u'0.00', 'trade_status': u'WAIT_BUYER_PAY', 'type': None, u'id': 8, 'quantity': u'1', 'subject': u'fhhh'}
+save notify
+{'bill': 8, 'time': u'2013-12-02 16:45:09', 'nid': u'de31596d65d210bd4d4efab9d96c95ba26', 'sign': u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I=', 'sign_type': u'RSA', 'type': u'trade_status_sync', u'id': 8}
+appid: 1005
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Page not found at http://127.0.0.1:8000/not</title>
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; background:#eee; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; margin-bottom:.4em; }
+    h1 span { font-size:60%; color:#666; font-weight:normal; }
+    table { border:none; border-collapse: collapse; width:100%; }
+    td, th { vertical-align:top; padding:2px 3px; }
+    th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    #info { background:#f6f6f6; }
+    #info ol { margin: 0.5em 4em; }
+    #info ol li { font-family: monospace; }
+    #summary { background: #ffc; }
+    #explanation { background:#eee; border-bottom: 0px none; }
+  </style>
+</head>
+<body>
+  <div id="summary">
+    <h1>Page not found <span>(404)</span></h1>
+    <table class="meta">
+      <tr>
+        <th>Request Method:</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th>Request URL:</th>
+      <td>http://127.0.0.1:8000/http://127.0.0.1:8000/not</td>
+      </tr>
+    </table>
+  </div>
+  <div id="info">
+    
+      <p>{u&#39;path&#39;: u&#39;http://127.0.0.1:8000/not&#39;}</p>
+    
+  </div>
+
+  <div id="explanation">
+    <p>
+      You're seeing this error because you have <code>DEBUG = True</code> in
+      your Django settings file. Change that to <code>False</code>, and Django
+      will display a standard 404 page.
+    </p>
+  </div>
+</body>
+</html>
+
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+verify ok
+save bill
+{'trade_no': u'2013120268377703', 'seller_email': u'zhangq@xyj001.com', 'seller_id': u'2088111756994892', 'is_total_fee_adjust': u'Y', 'buyer_id': u'2088002411644031', 'gmt_payment': None, 'price': u'1.00', 'buyer_email': u'caihuapcl@163.com', 'body': u'fnjmjj#1005#', 'use_coupon': u'N', 'gmt_create': u'2013-12-02 16:45:09', 'out_trade_no': u'120216495446055', 'total_fee': u'1.00', 'discount': u'0.00', 'trade_status': u'WAIT_BUYER_PAY', 'type': None, u'id': 9, 'quantity': u'1', 'subject': u'fhhh'}
+save notify
+{'bill': 9, 'time': u'2013-12-02 16:45:09', 'nid': u'de31596d65d210bd4d4efab9d96c95ba26', 'sign': u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I=', 'sign_type': u'RSA', 'type': u'trade_status_sync', u'id': 9}
+appid: 1005
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Page not found at http://127.0.0.1:8000/not</title>
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; background:#eee; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; margin-bottom:.4em; }
+    h1 span { font-size:60%; color:#666; font-weight:normal; }
+    table { border:none; border-collapse: collapse; width:100%; }
+    td, th { vertical-align:top; padding:2px 3px; }
+    th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    #info { background:#f6f6f6; }
+    #info ol { margin: 0.5em 4em; }
+    #info ol li { font-family: monospace; }
+    #summary { background: #ffc; }
+    #explanation { background:#eee; border-bottom: 0px none; }
+  </style>
+</head>
+<body>
+  <div id="summary">
+    <h1>Page not found <span>(404)</span></h1>
+    <table class="meta">
+      <tr>
+        <th>Request Method:</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th>Request URL:</th>
+      <td>http://127.0.0.1:8000/http://127.0.0.1:8000/not</td>
+      </tr>
+    </table>
+  </div>
+  <div id="info">
+    
+      <p>{u&#39;path&#39;: u&#39;http://127.0.0.1:8000/not&#39;}</p>
+    
+  </div>
+
+  <div id="explanation">
+    <p>
+      You're seeing this error because you have <code>DEBUG = True</code> in
+      your Django settings file. Change that to <code>False</code>, and Django
+      will display a standard 404 page.
+    </p>
+  </div>
+</body>
+</html>
+
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+verify ok
+save bill
+{'trade_no': u'2013120268377703', 'seller_email': u'zhangq@xyj001.com', 'seller_id': u'2088111756994892', 'is_total_fee_adjust': u'Y', 'buyer_id': u'2088002411644031', 'gmt_payment': None, 'price': u'1.00', 'buyer_email': u'caihuapcl@163.com', 'body': u'fnjmjj#1005#', 'use_coupon': u'N', 'gmt_create': u'2013-12-02 16:45:09', 'out_trade_no': u'120216495446055', 'total_fee': u'1.00', 'discount': u'0.00', 'trade_status': u'WAIT_BUYER_PAY', 'type': None, u'id': 10, 'quantity': u'1', 'subject': u'fhhh'}
+save notify
+{'bill': 10, 'time': u'2013-12-02 16:45:09', 'nid': u'de31596d65d210bd4d4efab9d96c95ba26', 'sign': u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I=', 'sign_type': u'RSA', 'type': u'trade_status_sync', u'id': 10}
+appid: 1005
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Page not found at http://127.0.0.1:8000/not</title>
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; background:#eee; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; margin-bottom:.4em; }
+    h1 span { font-size:60%; color:#666; font-weight:normal; }
+    table { border:none; border-collapse: collapse; width:100%; }
+    td, th { vertical-align:top; padding:2px 3px; }
+    th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    #info { background:#f6f6f6; }
+    #info ol { margin: 0.5em 4em; }
+    #info ol li { font-family: monospace; }
+    #summary { background: #ffc; }
+    #explanation { background:#eee; border-bottom: 0px none; }
+  </style>
+</head>
+<body>
+  <div id="summary">
+    <h1>Page not found <span>(404)</span></h1>
+    <table class="meta">
+      <tr>
+        <th>Request Method:</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th>Request URL:</th>
+      <td>http://127.0.0.1:8000/http://127.0.0.1:8000/not</td>
+      </tr>
+    </table>
+  </div>
+  <div id="info">
+    
+      <p>{u&#39;path&#39;: u&#39;http://127.0.0.1:8000/not&#39;}</p>
+    
+  </div>
+
+  <div id="explanation">
+    <p>
+      You're seeing this error because you have <code>DEBUG = True</code> in
+      your Django settings file. Change that to <code>False</code>, and Django
+      will display a standard 404 page.
+    </p>
+  </div>
+</body>
+</html>
+
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+verify ok
+save bill
+{'trade_no': u'2013120268377703', 'seller_email': u'zhangq@xyj001.com', 'seller_id': u'2088111756994892', 'is_total_fee_adjust': u'Y', 'buyer_id': u'2088002411644031', 'gmt_payment': None, 'price': u'1.00', 'buyer_email': u'caihuapcl@163.com', 'body': u'fnjmjj#1005#', 'use_coupon': u'N', 'gmt_create': u'2013-12-02 16:45:09', 'out_trade_no': u'120216495446055', 'total_fee': u'1.00', 'discount': u'0.00', 'trade_status': u'WAIT_BUYER_PAY', 'type': None, u'id': 11, 'quantity': u'1', 'subject': u'fhhh'}
+save notify
+{'bill': 11, 'time': u'2013-12-02 16:45:09', 'nid': u'de31596d65d210bd4d4efab9d96c95ba26', 'sign': u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I=', 'sign_type': u'RSA', 'type': u'trade_status_sync', u'id': 11}
+appid: 1005
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Page not found at http://127.0.0.1:8000/not</title>
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; background:#eee; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; margin-bottom:.4em; }
+    h1 span { font-size:60%; color:#666; font-weight:normal; }
+    table { border:none; border-collapse: collapse; width:100%; }
+    td, th { vertical-align:top; padding:2px 3px; }
+    th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    #info { background:#f6f6f6; }
+    #info ol { margin: 0.5em 4em; }
+    #info ol li { font-family: monospace; }
+    #summary { background: #ffc; }
+    #explanation { background:#eee; border-bottom: 0px none; }
+  </style>
+</head>
+<body>
+  <div id="summary">
+    <h1>Page not found <span>(404)</span></h1>
+    <table class="meta">
+      <tr>
+        <th>Request Method:</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th>Request URL:</th>
+      <td>http://127.0.0.1:8000/http://127.0.0.1:8000/not</td>
+      </tr>
+    </table>
+  </div>
+  <div id="info">
+    
+      <p>{u&#39;path&#39;: u&#39;http://127.0.0.1:8000/not&#39;}</p>
+    
+  </div>
+
+  <div id="explanation">
+    <p>
+      You're seeing this error because you have <code>DEBUG = True</code> in
+      your Django settings file. Change that to <code>False</code>, and Django
+      will display a standard 404 page.
+    </p>
+  </div>
+</body>
+</html>
+
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#1005#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>

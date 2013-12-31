@@ -1,17 +1,22 @@
 # -*- coding:utf-8 -*-
-
+from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 import httplib
-import json
 from threading import Thread
 import urllib
 
-from accounts.models import Buyer, Partner
-from alipay.alipay import *
-from payment.models import Bill, Notify
+from alipay_python.accounts.models import Buyer
+from alipay_python.alipay.alipay import *
+from models import Bill, Notify
 
+
+logger1 = logging.getLogger(__name__)
+logger1.setLevel(logging.INFO)
+logger1.addHandler(logging.FileHandler(LOGGING_PAYMENT))
 
 @csrf_exempt
 def notify_url_handler(request):
@@ -20,7 +25,10 @@ def notify_url_handler(request):
     Logging the information.
     """
     if request.method == 'POST':
+        logger1.info('get post')
+        logger1.info(request.POST)
         if notify_verify(request.POST):
+            logger1.info('verify ok')
             # save the bill
             bill = Bill(out_trade_no=request.POST.get('out_trade_no'),
                         subject=request.POST.get('subject'),
@@ -41,6 +49,8 @@ def notify_url_handler(request):
                         use_coupon=request.POST.get('use_coupon'),
                         discount=request.POST.get('discount'))
             bill.save()
+            logger1.info('save bill')
+            logger1.info(bill.__unicode__())
 
             # save the user
             users = Buyer.objects.filter(buyer_id=request.POST.get('buyer_id'))
@@ -49,6 +59,8 @@ def notify_url_handler(request):
                               buyer_id=bill.buyer_id,
                               buyer_email=bill.buyer_email)
                 users.save()
+                logger1.info('save user')
+                logger1.info(users.__unicode__())
 
             # save this notify
             notify = Notify(time=request.POST.get('notify_time'),
@@ -58,9 +70,12 @@ def notify_url_handler(request):
                             sign=request.POST.get('sign'),
                             bill=bill)
             notify.save()
+            logger1.info('save notify')
+            logger1.info(notify.__unicode__())
 
             # start new thread to notify partner
             appid = bill.get_appid()
+            logger1.info('appid: ' + appid)
             partner = Partner.objects.get(app_id=appid)
             if partner.real != 1:
                 return HttpResponse("fail")
@@ -73,7 +88,7 @@ def notify_url_handler(request):
             sign = build_mysign(paramstr, appid)
             params.update({'sign': sign, })
             if partner:
-                thread = Thread(target=notify_partner, args=(partner.get_doamin(), partner.notify_url, params))
+                thread = Thread(target=notify_partner, args=(bill, partner.get_doamin(), partner.notify_url, params))
                 thread.start()
 
             return HttpResponse('success')
@@ -107,27 +122,46 @@ def index(request):
 
 
 # notify partern's handler page
-def notify_partner(domain, url, params):
+def notify_partner(bill, domain, url, params):
     con = httplib.HTTPConnection(domain)
     param = urllib.urlencode(params)
     con.request('POST', url, param)
     resp = con.getresponse()
-    # TODO: need logic
+    logger1.info(resp.read())
+    if resp.read() == 'success':
+        bill.trade_status = 'OK'
+        bill.save()
 
-
+@csrf_exempt
+@require_http_methods(['POST'])
 def api(request):
     # check sign
     if notify_verify(request.POST):
         method = request.POST.get('method')
         if method == 'getPayment':
-            payment = Bill.objects.get(out_trade_no=request.POST.get('out_trade_no'))
+            payment = Bill.objects.filter(out_trade_no=request.POST.get('out_trade_no'),)
             if payment:
-                return HttpResponse(json.dumps(payment), content_type="application/json")
+                return HttpResponse(serializers.serialize("json", payment), content_type="application/json")
         elif method == 'getUser':
-            users = Buyer.objects.get(buyer_id=request.POST.get('buyer_id'))
-            if users:
-                return HttpResponse(json.dumps(users), content_type="application/json")
+            user = Buyer.objects.filter(buyer_id=request.POST.get('buyer_id'))
+            if user:
+                return HttpResponse(serializers.serialize("json", user), content_type="application/json")
         elif method == 'getPaymentByUser':
-            users = Buyer.objects.get(buyer_id=request.POST.get('buyer_id'))
+            bills = Bill.objects.filter(buyer_id=request.POST.get('buyer_id'))
+            if bills:
+                return HttpResponse(serializers.serialize("json", bills), content_type="application/json")
 
     return HttpResponse('false')
+
+@csrf_exempt
+def not_url_handler(request):
+    if request.POST and request.POST['sign_type']:
+        return HttpResponse('success')    
+    else:
+        return HttpResponse('fail')
+    
+@csrf_exempt
+@require_http_methods(['GET'])
+def list_payment(request):
+    bill = Bill.objects.all()
+    return render_to_response("list.html", {"bill": bill})
