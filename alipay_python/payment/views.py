@@ -85,7 +85,7 @@ def notify_url_handler(request):
                       'fee': str(bill.total_fee),
                       'sign_type': 'MD5'}
             _, paramstr = params_filter(params)
-            sign = build_mysign(paramstr, appid)
+            sign = build_mysign(paramstr, partner.app_key)
             params.update({'sign': sign, })
             if partner:
                 thread = Thread(target=notify_partner, args=(bill, partner.get_doamin(), partner.notify_url, params))
