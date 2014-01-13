@@ -1,4 +1,6 @@
 from django.db.models import Max
+from django.shortcuts import redirect
+from django.contrib.auth import authenticate, login, logout
 from django.db.models.query import Q
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
@@ -8,6 +10,7 @@ from django.views.generic.base import TemplateView
 from models import Partner
 import random
 import string
+from django.contrib.auth.decorators import login_required
 
 __author__ = 'sharl'
 
@@ -19,8 +22,24 @@ _TYPE_TRANSPORT = 3
 
 class Register(TemplateView):
     template_name = "reg.html"
+    
+def user_login(request):
+    return render_to_response("login.html", {})
 
+@csrf_exempt
+@require_http_methods(['GET', 'POST'])
+def do_user_login(request):
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect("/manager")
+    return HttpResponse("FAIL")
 
+def do_user_logout(request):
+    logout(request)
+    
 @csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def do_reg(request):
@@ -67,6 +86,7 @@ def gen_app_key():
 
 @csrf_exempt
 @require_http_methods(['GET' , 'POST'])
+@login_required
 def manager(request):
     all = request.GET.get('all')
     keyword = request.GET.get('keyword')
@@ -82,6 +102,7 @@ def manager(request):
 
 @csrf_exempt
 @require_http_methods(['GET'])
+@login_required
 def allow_user(request):
     id = request.GET.get('app_id')
     partner = Partner.objects.get(app_id=id)
@@ -94,6 +115,7 @@ def allow_user(request):
 
 @csrf_exempt
 @require_http_methods(['GET'])
+@login_required
 def deny_user(request):
     id = request.GET.get('app_id')
     partner = Partner.objects.get(app_id=id)
@@ -101,4 +123,28 @@ def deny_user(request):
         partner.real = 2
         partner.save()
         return HttpResponse("denied")
+    return HttpResponse("no found")
+
+@csrf_exempt
+@require_http_methods(['GET'])
+@login_required
+def edit_user(request):
+    id = request.GET.get('app_id')
+    partner = Partner.objects.get(app_id=id)
+    if partner and partner.real == 1:
+        return render_to_response("edit.html", {"partner": partner})
+    return HttpResponse("no found")
+
+@csrf_exempt
+@require_http_methods(['POST'])
+@login_required
+def save_user(request):
+    id = request.POST.get('id')
+    partner = Partner.objects.get(id=id)
+    if partner and partner.real == 1:
+        partner.app_name = request.POST.get('app_name')
+        partner.company_name = request.POST.get('company_name')
+        partner.notify_url = request.POST.get('notify_url')
+        partner.save()
+        return HttpResponse("ok")
     return HttpResponse("no found")

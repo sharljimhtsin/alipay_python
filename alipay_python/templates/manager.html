@@ -38,7 +38,7 @@
 				<a href="/allow?app_id={{ p.app_id }}">通过</a>
 				/ <a href="/deny?app_id={{ p.app_id }}">不通过</a> 
 				{% elif p.real == 1 %}
-				已允许 
+				已允许 | <a href="/edit?app_id={{ p.app_id }}" >编辑</a>
 				{% elif p.real == 2 %}
 				已拒绝 
 				{% endif %}

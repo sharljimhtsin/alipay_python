@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}
+<title>编辑</title>
+{% endblock %} {% block body %}
+<div align="center">
+	<form action="save" method="post">
+		<table>
+			<tr>
+				<td colspan="2" align="center">应用信息修改</td>
+			</tr>
+			<tr>
+				<td><label>应用名称</label><input name="app_name"
+					value="{{ partner.app_name }}"></td>
+				<td><label>公司名称</label><input name="company_name"
+					value="{{ partner.company_name }}"></td>
+			</tr>
+			<tr>
+				<td><label>通知地址</label><input name="notify_url"
+					value="{{ partner.notify_url }}"></td>
+				<td><input type="hidden" name="id" value="{{ partner.id }}"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button type="submit" value="SAVE">提交修改</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+{% endblock body %}

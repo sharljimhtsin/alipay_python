@@ -15,6 +15,8 @@
             <td>body</td>
             <td>price</td>
             <td>total_fee</td>
+            <td>gmt_create</td>
+            <td>gmt_payment</td>
         </tr>
         {% for p in bill %}
         <tr>
@@ -24,6 +26,8 @@
             <td>{{ p.body }}</td>
             <td>{{ p.price }}</td>
             <td>{{ p.total_fee }}</td>
+            <td>{{ p.gmt_create }}</td>
+            <td>{{ p.gmt_payment }}</td>
         </tr>
         {% endfor %}
     </table>

@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}
+<title>登陆</title>
+{% endblock %} {% block body %}
+<div align="center">
+	<form action="doLogin" method="post">
+		<table>
+			<tr>
+				<td colspan="2" align="center">登陆</td>
+			</tr>
+			<tr>
+				<td colspan="2"><label>用户名</label><input name="username"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><label>密码</label><input type="password"
+					name="password"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button type="submit" value="LOGIN">登陆</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+{% endblock body %}
