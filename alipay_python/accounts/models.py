@@ -29,7 +29,7 @@ class Partner(models.Model):
     email = models.EmailField()
     phone = models.TextField(null=True)
     app_type = models.IntegerField()
-    app_id = models.IntegerField()
+    app_id = models.CharField(max_length=20)
     app_key = models.CharField(max_length=10)
     public_key = models.TextField(null=True)
     notify_url = models.TextField()

@@ -15,9 +15,7 @@ from django.contrib.auth.decorators import login_required
 __author__ = 'sharl'
 
 _TYPE_GAME = 0
-_TYPE_MUSIC = 1
-_TYPE_LIVE = 2
-_TYPE_TRANSPORT = 3
+_TYPE_APP = 1
 
 
 class Register(TemplateView):
@@ -61,19 +59,18 @@ def do_reg(request):
 
 def gen_app_id(type):
     type = int(type)
-    max_id = Partner.objects.filter(app_type=type).aggregate(Max('app_id'))['app_id__max']
-    if max_id is None:
-        if type == _TYPE_GAME:
-            max_id = 1000
-        elif type == _TYPE_MUSIC:
-            max_id = 2000
-        elif type == _TYPE_LIVE:
-            max_id = 3000
-        elif type == _TYPE_TRANSPORT:
-            max_id = 4000
-    else:
-        max_id += 1
-    return max_id
+    if type == _TYPE_GAME:
+        max_id = Partner.objects.filter(app_type=type, app_id__startswith='yx').count()
+        if max_id == 0:
+            return 'yx' + str(1)
+        else:
+            return 'yx' + str(max_id + 1)
+    elif type == _TYPE_APP:
+        max_id = Partner.objects.filter(app_type=type, app_id__startswith='yy').count()
+        if max_id == 0:
+            return 'yy' + str(1)
+        else:
+            return 'yy' + str(max_id + 1)
 
 def gen_app_key():
     strs = string.ascii_uppercase + string.ascii_lowercase + string.digits
