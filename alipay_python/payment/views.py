@@ -102,7 +102,7 @@ def notify_url_handler(request):
 def gen_inner_trade_no(pay_type):
     gen_id = str(uuid.uuid4()).replace('-', '')
     if pay_type == _TYPE_ALIPAY:
-        gen_id = 'ap' + gen_id
+        gen_id = 'AP' + gen_id
     return gen_id
 
 def return_url_handler(request):

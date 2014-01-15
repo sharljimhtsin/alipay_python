@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 from django.forms.models import model_to_dict
 
@@ -41,3 +42,7 @@ class Partner(models.Model):
     
     def get_url(self):
         return str(self.notify_url).split("/")[3]
+
+admin.site.register(Seller)
+admin.site.register(Buyer)
+admin.site.register(Partner)
