@@ -99,6 +99,10 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'alipay_python.payment',
     'alipay_python.accounts',
+    'django.contrib.staticfiles',
 )
+
+STATIC_ROOT = ""
+STATIC_URL = "/static/"
 
 LOGGING_PAYMENT = 'payment.log'

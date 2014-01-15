@@ -9,7 +9,7 @@ class Seller(models.Model):
     seller_id = models.IntegerField()
     seller_email = models.EmailField()
 
-    def __unicode__(self):
+    def as_list(self):
         return model_to_dict(self)
 
 
@@ -18,7 +18,7 @@ class Buyer(models.Model):
     buyer_id = models.TextField()
     buyer_email = models.EmailField()
 
-    def __unicode__(self):
+    def as_list(self):
         return model_to_dict(self)
 
 

@@ -7,10 +7,11 @@ import re
 
 
 class Bill(models.Model):
-    out_trade_no = models.CharField(max_length=64, null=True)
+    in_trade_no = models.CharField(max_length=100, null=True)  # 内部订单号
+    out_trade_no = models.CharField(max_length=64, null=True)  # 商户自己的订单号
     subject = models.TextField(null=True)
     type = models.CharField(max_length=4, null=True)
-    trade_no = models.TextField(null=True)
+    trade_no = models.TextField(null=True)  # 支付平台订单号
     trade_status = models.TextField(null=True)
     seller_id = models.TextField(null=True)
     seller_email = models.EmailField(max_length=100, null=True)
@@ -26,7 +27,7 @@ class Bill(models.Model):
     use_coupon = models.CharField(max_length=1, null=True)
     discount = models.CharField(max_length=30, null=True)
 
-    def __unicode__(self):
+    def as_list(self):
         return model_to_dict(self)
 
     def get_appid(self):
@@ -42,7 +43,7 @@ class Notify(models.Model):
     sign = models.TextField()
     bill = models.ForeignKey(Bill)
 
-    def __unicode__(self):
+    def as_list(self):
         return model_to_dict(self)
 
 

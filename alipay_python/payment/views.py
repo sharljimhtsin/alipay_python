@@ -8,6 +8,7 @@ from django.views.decorators.http import require_http_methods
 import httplib
 from threading import Thread
 import urllib
+import uuid
 
 from alipay_python.accounts.models import Buyer
 from alipay_python.alipay.alipay import *
@@ -17,6 +18,8 @@ from models import Bill, Notify
 logger1 = logging.getLogger(__name__)
 logger1.setLevel(logging.INFO)
 logger1.addHandler(logging.FileHandler(LOGGING_PAYMENT))
+
+_TYPE_ALIPAY = 0
 
 @csrf_exempt
 def notify_url_handler(request):
@@ -31,6 +34,7 @@ def notify_url_handler(request):
             logger1.info('verify ok')
             # save the bill
             bill = Bill(out_trade_no=request.POST.get('out_trade_no'),
+                        in_trade_no=gen_inner_trade_no(_TYPE_ALIPAY),  # inner trade number
                         subject=request.POST.get('subject'),
                         type=request.POST.get('type'),
                         trade_no=request.POST.get('trade_no'),
@@ -50,7 +54,7 @@ def notify_url_handler(request):
                         discount=request.POST.get('discount'))
             bill.save()
             logger1.info('save bill')
-            logger1.info(bill.__unicode__())
+            logger1.info(bill.as_list())
 
             # save the user
             users = Buyer.objects.filter(buyer_id=request.POST.get('buyer_id'))
@@ -60,7 +64,7 @@ def notify_url_handler(request):
                               buyer_email=bill.buyer_email)
                 users.save()
                 logger1.info('save user')
-                logger1.info(users.__unicode__())
+                logger1.info(users.as_list())
 
             # save this notify
             notify = Notify(time=request.POST.get('notify_time'),
@@ -71,7 +75,7 @@ def notify_url_handler(request):
                             bill=bill)
             notify.save()
             logger1.info('save notify')
-            logger1.info(notify.__unicode__())
+            logger1.info(notify.as_list())
 
             # start new thread to notify partner
             appid = bill.get_appid()
@@ -79,7 +83,8 @@ def notify_url_handler(request):
             partner = Partner.objects.get(app_id=appid)
             if partner.real != 1:
                 return HttpResponse("fail")
-            params = {'subject': str(bill.subject),
+            params = {'out_trade_no':str(bill.out_trade_no)[len(partner.app_id) - 1:],
+                      'subject': str(bill.subject),
                       'buyer_id': str(bill.buyer_id),
                       'buyer_email': str(bill.buyer_email),
                       'fee': str(bill.total_fee),
@@ -94,6 +99,11 @@ def notify_url_handler(request):
             return HttpResponse('success')
     return HttpResponse("fail")
 
+def gen_inner_trade_no(pay_type):
+    gen_id = str(uuid.uuid4()).replace('-', '')
+    if pay_type == _TYPE_ALIPAY:
+        gen_id = 'ap' + gen_id
+    return gen_id
 
 def return_url_handler(request):
     """
@@ -143,15 +153,15 @@ def api(request):
         if method == 'getPayment':
             payment = Bill.objects.filter(out_trade_no=request.POST.get('out_trade_no'),)
             if payment:
-                return HttpResponse(serializers.serialize("json", payment), content_type="application/json")
+                return HttpResponse(serializers.serialize("json", payment.as_list()), content_type="application/json")
         elif method == 'getUser':
             user = Buyer.objects.filter(buyer_id=request.POST.get('buyer_id'))
             if user:
-                return HttpResponse(serializers.serialize("json", user), content_type="application/json")
+                return HttpResponse(serializers.serialize("json", user.as_list()), content_type="application/json")
         elif method == 'getPaymentByUser':
             bills = Bill.objects.filter(buyer_id=request.POST.get('buyer_id'))
             if bills:
-                return HttpResponse(serializers.serialize("json", bills), content_type="application/json")
+                return HttpResponse(serializers.serialize("json", bills.as_list()), content_type="application/json")
 
     return HttpResponse('false')
 
