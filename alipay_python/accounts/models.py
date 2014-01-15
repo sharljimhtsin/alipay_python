@@ -38,3 +38,6 @@ class Partner(models.Model):
 
     def get_doamin(self):
         return str(self.notify_url).split("/")[2]
+    
+    def get_url(self):
+        return str(self.notify_url).split("/")[3]

@@ -30,7 +30,7 @@ class Bill(models.Model):
         return model_to_dict(self)
 
     def get_appid(self):
-        m = re.search("(?<=#)\d+(?=#)", str(self.body))
+        m = re.search("(?<=#)\w+(?=#)", str(self.body))
         return m.group(0)
 
 

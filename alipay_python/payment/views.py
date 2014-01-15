@@ -88,7 +88,7 @@ def notify_url_handler(request):
             sign = build_mysign(paramstr, partner.app_key)
             params.update({'sign': sign, })
             if partner:
-                thread = Thread(target=notify_partner, args=(bill, partner.get_doamin(), partner.notify_url, params))
+                thread = Thread(target=notify_partner, args=(bill, partner.get_doamin(), partner.get_url(), params))
                 thread.start()
 
             return HttpResponse('success')
@@ -125,7 +125,9 @@ def index(request):
 def notify_partner(bill, domain, url, params):
     con = httplib.HTTPConnection(domain)
     param = urllib.urlencode(params)
-    con.request('POST', url, param)
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
+    logger1.info(param)
+    con.request('POST', '/' + url, param, headers)
     resp = con.getresponse()
     logger1.info(resp.read())
     if resp.read() == 'success':
@@ -155,7 +157,9 @@ def api(request):
 
 @csrf_exempt
 def not_url_handler(request):
+    logger1.info('notify test')
     if request.POST and request.POST['sign_type']:
+        logger1.info(request.POST)
         return HttpResponse('success')    
     else:
         return HttpResponse('fail')
