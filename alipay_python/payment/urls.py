@@ -8,5 +8,5 @@ urlpatterns = patterns('',
                        url(r'^notify_url$', view='alipay_python.payment.views.notify_url_handler', name="payment_notify_url"),
                        url(r'^not$', view='alipay_python.payment.views.not_url_handler', name="test_notify_url"),
                        url(r'^list$', view='alipay_python.payment.views.list_payment', name="list_payment"),
-                       url(r'^.$', view='alipay_python.payment.views.index', name="payment_index"),
+                       url(r'^.?$', view='alipay_python.payment.views.index', name="payment_index"),
 )
