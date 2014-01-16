@@ -1,4 +1,3 @@
-from django.db.models import Max
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.db.models.query import Q
@@ -62,15 +61,22 @@ def gen_app_id(type):
     if type == _TYPE_GAME:
         max_id = Partner.objects.filter(app_type=type, app_id__startswith='yx').count()
         if max_id == 0:
-            return 'yx' + str(1)
+            return gen_app_id_num('yx', str(1))
         else:
-            return 'yx' + str(max_id + 1)
+            return gen_app_id_num('yx', str(max_id + 1))
     elif type == _TYPE_APP:
         max_id = Partner.objects.filter(app_type=type, app_id__startswith='yy').count()
         if max_id == 0:
-            return 'yy' + str(1)
+            return gen_app_id_num('yy', str(1))
         else:
-            return 'yy' + str(max_id + 1)
+            return gen_app_id_num('yy', str(max_id + 1))
+        
+def gen_app_id_num(prefix, num):
+    while True:
+        if len(prefix + num) == 10:
+            return prefix + num
+        else:
+            prefix = prefix + '0'
 
 def gen_app_key():
     strs = string.ascii_uppercase + string.ascii_lowercase + string.digits
