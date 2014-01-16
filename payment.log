@@ -473,3 +473,15 @@ save notify
 appid: yx3
 fee=1.00&sign=d66c275fc8c22185daa434a359c513ef&sign_type=MD5&buyer_email=caihuapcl%40163.com&subject=fhhh&buyer_id=2088002411644031
 success
+get post
+<QueryDict: {u'seller_email': [u'zhangq@xyj001.com'], u'sign': [u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I='], u'subject': [u'fhhh'], u'is_total_fee_adjust': [u'Y'], u'gmt_create': [u'2013-12-02 16:45:09'], u'out_trade_no': [u'yx00000006120216495446055'], u'sign_type': [u'RSA'], u'body': [u'fnjmjj#yx00000006#'], u'price': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'discount': [u'0.00'], u'trade_status': [u'WAIT_BUYER_PAY'], u'trade_no': [u'2013120268377703'], u'seller_id': [u'2088111756994892'], u'use_coupon': [u'N'], u'payment_type': [u'1'], u'total_fee': [u'1.00'], u'notify_time': [u'2013-12-02 16:45:09'], u'buyer_id': [u'2088002411644031'], u'notify_id': [u'de31596d65d210bd4d4efab9d96c95ba26'], u'notify_type': [u'trade_status_sync'], u'quantity': [u'1']}>
+verify ok
+save bill
+{'trade_no': u'2013120268377703', 'seller_email': u'zhangq@xyj001.com', 'seller_id': u'2088111756994892', 'in_trade_no': 'AP4c5af63786a744ea9d1c24d50ed43557', 'is_total_fee_adjust': u'Y', 'buyer_id': u'2088002411644031', 'gmt_payment': None, 'price': u'1.00', 'buyer_email': u'caihuapcl@163.com', 'body': u'fnjmjj#yx00000006#', 'use_coupon': u'N', 'gmt_create': u'2013-12-02 16:45:09', 'out_trade_no': u'yx00000006120216495446055', 'total_fee': u'1.00', 'discount': u'0.00', 'trade_status': u'WAIT_BUYER_PAY', 'type': None, u'id': 1, 'quantity': u'1', 'subject': u'fhhh'}
+save notify
+{'bill': 1, 'time': u'2013-12-02 16:45:09', 'nid': u'de31596d65d210bd4d4efab9d96c95ba26', 'sign': u'QT1+qLJR54+DNXfu6BpQ2bqKTo81x4W/U5TfhC2jMxO+ttz87KixcR3CBscgmrg1duOURasfwAyVKi/0yvC3ZCnRlfQXX15rrLJzBS0NRzDO66CYQ4lYu6aZGJ4yxRgk4D+A97nAkAvbrfZfwaRSeL7h9W6zTtvzky/4/PsK0+I=', 'sign_type': u'RSA', 'type': u'trade_status_sync', u'id': 28}
+appid: yx00000006
+fee=1.00&buyer_email=caihuapcl%40163.com&sign=6626b67a399315dbfab76de66e9fed3d&in_trade_no=AP4c5af63786a744ea9d1c24d50ed43557&sign_type=MD5&out_trade_no=6120216495446055&subject=fhhh&buyer_id=2088002411644031
+notify test
+<QueryDict: {u'fee': [u'1.00'], u'buyer_email': [u'caihuapcl@163.com'], u'sign': [u'6626b67a399315dbfab76de66e9fed3d'], u'in_trade_no': [u'AP4c5af63786a744ea9d1c24d50ed43557'], u'out_trade_no': [u'6120216495446055'], u'sign_type': [u'MD5'], u'buyer_id': [u'2088002411644031'], u'subject': [u'fhhh']}>
+success

@@ -83,7 +83,7 @@ def notify_url_handler(request):
             partner = Partner.objects.get(app_id=appid)
             if partner.real != 1:
                 return HttpResponse("fail")
-            params = {'out_trade_no':str(bill.out_trade_no)[len(partner.app_id) - 1:],
+            params = {'out_trade_no':str(bill.out_trade_no)[len(partner.app_id):],
                       'in_trade_no': str(bill.in_trade_no),
                       'subject': str(bill.subject),
                       'buyer_id': str(bill.buyer_id),
